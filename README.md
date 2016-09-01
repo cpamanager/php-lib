@@ -7,7 +7,7 @@ or suggestions please do not hesitate and contact us by sending email to support
 
 The first thing you have to do is to obtain the API KEY. You can do this by registering a new account. Later thigs are getting even simpler :)
 
-The basic call fort creating and changing the status of a transaction could look like below:
+The basic call for creating and changing the status of a transaction could look like below:
 
 ```
 // Create the ApiClient object. Remember that the domain has to exist (be added) to CPAMANAGER.NET account.
