@@ -18,8 +18,10 @@ $result = $client->createTransaction('GID-123');
 
 // Change the current status of the transaction.
 $client->setTransactionStatus('GID-123', ApiClient::TRANSACTION_STATUS_ACCEPTED);
+
 // Or
 $client->setTransactionStatus('GID-123', ApiClient::TRANSACTION_STATUS_REFUSED);
+
 // Or
 $client->setTransactionStatus('GID-123', ApiClient::TRANSACTION_STATUS_NEW);
 ```
