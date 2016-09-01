@@ -53,16 +53,6 @@ class ApiClient {
     }
     
     /**
-     * Returns transactions by given account.
-     * 
-     * @param int $limit Limit of the transactions to fetch
-     * @return array
-     */
-    public function getTransactions($limit = 10) {
-        return [];
-    }
-    
-    /**
      * Creates a new transaction for a given account. The method does not require
      * authentication.
      * 
@@ -124,6 +114,20 @@ class ApiClient {
         
         // Call the endpoint
         return $this->_curl('account/api/transaction/status', self::HTTP_METHOD_PUT, $data, true);        
+    }
+    
+    /**
+     * Fetches recently created transactions
+     * @return array
+     */
+    public function fetchTransactions() {
+        // Prepare the params array
+        $data = array(
+            "domain" => $this->_domain,
+        );      
+        
+        // Call the endpoint
+        return $this->_curl('account/api/transaction/fetch', self::HTTP_METHOD_GET, $data, true);                
     }
     
     /**
