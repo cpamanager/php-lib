@@ -10,7 +10,7 @@ The first thing you have to do is to obtain the API KEY. You can do this by regi
 The basic call for creating and changing the status of a transaction could look like below:
 
 #### Create a new transaction
-```
+```php
 // Create the ApiClient object. Remember that the domain has to exist (be added) to CPAMANAGER.NET account.
 $client = new ApiClient('APIKEY', 'yourdomain.com');
 
@@ -20,7 +20,7 @@ $result = $client->createTransaction('GID-123');
 
 #### Change status for a transaction
 
-```
+```php
 // Change the current status of the transaction.
 $client = new ApiClient('APIKEY', 'yourdomain.com');
 $client->setTransactionStatus('GID-123', ApiClient::TRANSACTION_STATUS_ACCEPTED);
@@ -36,7 +36,7 @@ $client->setTransactionStatus('GID-123', ApiClient::TRANSACTION_STATUS_NEW);
 
 #### Fetch recently created transactions (20)
 
-```
+```php
 // Fetch transactions.
 $client = new ApiClient('APIKEY', 'yourdomain.com');
 $client->fetchTransactions();
