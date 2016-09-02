@@ -63,32 +63,19 @@ class ApiClient {
      * @return int Id of the created transaction
      */
     public function createTransaction($gid, array $data = []) {
-
-        // If own configuration wasn't given, use the default
-        if (count($data) == 0) {
-            // Fetch information from cookie
-            $cpamtp = $_COOKIE['cpamtp'];
-
-            // Prepare the params array
-            $data = [
-                "partner_id" => $cpamtp[0],
-                "zone_id" => $cpamtp[1],
-                "website_id" => $cpamtp[3],
-                "action_id" => $cpamtp[2],
-                "gid" => $gid
-            ];              
-        } else {
-            // Add GID to the manually configured data array
-            $data['gid'] = $gid;
-        }
         
+        // Fetch information from the cookie
+        $cpamtpid = $_COOKIE['cpamtpid'];        
+        $data['gid'] = $gid;
+        $data['cpamtpid'] = $cpamtpid;
+
         // Call the endpoint
-        $response = $this->_curl('partner/api/transaction/create', self::HTTP_METHOD_POST, $data);
+        $transaction = $this->_curl('partner/api/transaction/create', self::HTTP_METHOD_POST, $data);
         if ($error = $this->_hasResponseError($response)) {
             throw new Exception($error['msg'], $error['code']);
         }
         
-        return $response['id'];
+        return $transaction['id'];
     }
     
     /**
