@@ -70,7 +70,7 @@ class ApiClient {
         $data['cpamtpid'] = $cpamtpid;
 
         // Call the endpoint
-        $transaction = $this->_curl('partner/api/transaction/create', self::HTTP_METHOD_POST, $data);
+        $transaction = $this->_curl('partner/api/transaction/create-by-hash', self::HTTP_METHOD_POST, $data);
         if ($error = $this->_hasResponseError($response)) {
             throw new Exception($error['msg'], $error['code']);
         }
